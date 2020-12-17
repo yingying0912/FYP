@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CheckClean : MonoBehaviour
 {
-    BacteriaTrigger[] BacteriaTriggered;
+    public List<GameObject> Bacterium = new List<GameObject>();
+    List<BacteriaTrigger> BacteriaTriggered = new List<BacteriaTrigger>();
     bool isCleaned;
     int CleanedNum;
     
@@ -13,7 +14,8 @@ public class CheckClean : MonoBehaviour
     {
         isCleaned = false;
         CleanedNum = 0;
-        BacteriaTriggered = GetComponentsInChildren<BacteriaTrigger>();
+        for (int i = 0; i < Bacterium.Count; i++)
+            BacteriaTriggered.Add(Bacterium[i].GetComponent<BacteriaTrigger>());
     }
 
     // Update is called once per frame
@@ -28,7 +30,7 @@ public class CheckClean : MonoBehaviour
                 CleanedNum += 1;
         }
 
-        if (CleanedNum == BacteriaTriggered.Length)
+        if (CleanedNum == BacteriaTriggered.Count)
             isCleaned = true;
 
         if (isCleaned)

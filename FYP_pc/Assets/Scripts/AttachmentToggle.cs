@@ -4,38 +4,36 @@ using UnityEngine;
 
 public class AttachmentToggle : MonoBehaviour
 {
-    public GameObject gameObject;
-    public string bacteriaTag;
-    GameObject[] Bacterium;
+    public GameObject[] gameObject;
+    List<List<GameObject>> Bacterium_ = new List<List<GameObject>>();
+    //GameObject[] Bacterium_ = CheckClean.Bacterium;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        gameObject.SetActive(false);
-        Bacterium = GameObject.FindGameObjectsWithTag(bacteriaTag);
+        for (int i = 0; i < gameObject.Length; i++)
+        {
+            Bacterium_.Add(gameObject[i].GetComponent<CheckClean>().Bacterium);
+            //Bacterium_[i].AddRange(gameObject[i].GetComponent<CheckClean>().Bacterium);
+            gameObject[i].SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        for (int i = 0; i < gameObject.Length; i++)
         {
-            if (!gameObject.active)
-                gameObject.SetActive(true);
+            if (!gameObject[i].active)
+            {
+                foreach (GameObject bacteria in Bacterium_[i])
+                    bacteria.SetActive(false);
+            }
             else
-                gameObject.SetActive(false);
+            {
+                foreach (GameObject bacteria in Bacterium_[i])
+                    bacteria.SetActive(true);
+            }
         }
-        
-        if (!gameObject.active)
-        {
-            foreach (GameObject bacteria in Bacterium)
-                bacteria.SetActive(false);
-        }
-        else
-        {
-            foreach (GameObject bacteria in Bacterium)
-                bacteria.SetActive(true);
-        }
-
     }
 }
