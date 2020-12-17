@@ -1,0 +1,48 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CheckClean_Tag : MonoBehaviour
+{
+    public string bacteriaTag;
+    GameObject[] Bacterium;
+    List<BacteriaTrigger> BacteriaTriggered = new List<BacteriaTrigger>();
+    bool isCleaned;
+    int CleanedNum;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        isCleaned = false;
+        CleanedNum = 0;
+        Bacterium = GameObject.FindGameObjectsWithTag(bacteriaTag);
+        for (int i = 0; i < Bacterium.Length; i++)
+            BacteriaTriggered.Add(Bacterium[i].GetComponent<BacteriaTrigger>());
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        CleanedNum = 0;
+        isCleaned = false; 
+
+        foreach (BacteriaTrigger bacteria in BacteriaTriggered)
+        {
+            if (bacteria.TriggeredNum >= 10)
+                CleanedNum += 1;
+        }
+
+        if (CleanedNum == BacteriaTriggered.Count)
+            isCleaned = true;
+
+        if (isCleaned)
+        {
+            Debug.Log(name + " is Cleaned!");
+            foreach (BacteriaTrigger bacteria in BacteriaTriggered)
+            {
+                bacteria.TriggeredNum = 0;
+            }
+        }
+            
+    }
+}

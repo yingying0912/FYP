@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 9112364931966862727}
   - component: {fileID: 9112364931966862724}
   - component: {fileID: 9112364931966862747}
+  - component: {fileID: 8965645973815162413}
   m_Layer: 0
-  m_Name: Bateria
+  m_Name: Bacteria
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,3 +142,16 @@ MonoBehaviour:
     layerIndex: 0
   _eventTable:
     _entries: []
+--- !u!114 &8965645973815162413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112364931966862725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4102136bef39cfb45b0e4e9851075e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggeredNum: 0
