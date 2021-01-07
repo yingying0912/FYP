@@ -6,8 +6,9 @@ public class CheckClean : MonoBehaviour
 {
     public List<GameObject> Bacterium = new List<GameObject>();
     List<BacteriaTrigger> BacteriaTriggered = new List<BacteriaTrigger>();
-    bool isCleaned;
+    public bool isCleaned;
     int CleanedNum;
+    [SerializeField] int cleanConstant;
     
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class CheckClean : MonoBehaviour
 
         foreach (BacteriaTrigger bacteria in BacteriaTriggered)
         {
-            if (bacteria.TriggeredNum >= 10)
+            if (bacteria.TriggeredNum >= cleanConstant)
                 CleanedNum += 1;
         }
 
