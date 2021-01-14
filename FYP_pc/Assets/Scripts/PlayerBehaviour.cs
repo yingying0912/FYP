@@ -8,7 +8,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     [SerializeField] int maxHP;
     int currentHp;
-    public PlayerStatus currentState;
+    static public PlayerStatus currentState;
 
     int attackValue;
     int damageValue;
@@ -26,6 +26,9 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentState == PlayerStatus.normal || currentState == PlayerStatus.super)
+            checkStatus();
+
         switch (currentState)
         {
             case PlayerStatus.normal:
@@ -38,12 +41,9 @@ public class PlayerBehaviour : MonoBehaviour
                 checkTime();
                 break;
             case PlayerStatus.dead:
-                attackValue = 0;
-                damageValue = 0;
+                GameManager.gameState = GameManager.GameStatus.lose;
                 break;
         }
-
-        
     }
 
     public void Attack()
@@ -58,9 +58,22 @@ public class PlayerBehaviour : MonoBehaviour
 
     void checkTime()
     {
+        currentTime += Time.deltaTime;
         if (currentTime >= superDuration)
+        {
             currentState = PlayerStatus.normal;
-        else
-            currentTime += Time.deltaTime;
+            currentTime = 0;
+        }  
+    }
+
+    public void receivedDamage(int damage)
+    {
+        currentHp -= damage;
+    }
+
+    void checkStatus()
+    {
+        if (currentHp <= 0)
+            currentState = PlayerStatus.dead;
     }
 }

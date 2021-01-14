@@ -11,7 +11,7 @@ public class CheckClean : MonoBehaviour
     [SerializeField] int cleanConstant;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         isCleaned = false;
         CleanedNum = 0;

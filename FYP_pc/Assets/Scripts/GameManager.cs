@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    enum GameStatus { start, lose, win};
+    public enum GameStatus { start, lose, win};
 
-    static GameStatus gameState;
+    static public GameStatus gameState;
 
     // Start is called before the first frame update
     void Start()

@@ -28,15 +28,15 @@ public class ChargeEnergy : MonoBehaviour
             player.Attack();
             currentCharge = 0;
 
-            if (player.currentState == PlayerBehaviour.PlayerStatus.normal)
+            if (PlayerBehaviour.currentState == PlayerBehaviour.PlayerStatus.normal)
                 attackNum++;
             
             Debug.Log("Enemy received attack");
             enemy.receivedAttack(player.getAttackValue());
         }
         
-        if (attackNum % 5 == 0 && player.currentState == PlayerBehaviour.PlayerStatus.normal)
-            player.currentState = PlayerBehaviour.PlayerStatus.super;
+        if (attackNum % 5 == 0 && PlayerBehaviour.currentState == PlayerBehaviour.PlayerStatus.normal)
+            PlayerBehaviour.currentState = PlayerBehaviour.PlayerStatus.super;
     }
 
     public void Charging()

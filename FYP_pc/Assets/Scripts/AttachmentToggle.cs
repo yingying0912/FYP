@@ -7,7 +7,7 @@ public class AttachmentToggle : MonoBehaviour
     List<GameObject> Bacterium_ = new List<GameObject>();
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Bacterium_ = gameObject.GetComponent<CheckClean>().Bacterium;
     }
