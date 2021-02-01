@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public enum GameStatus { start, lose, win};
+    [SerializeField] GameObject loseUI;
+    [SerializeField] GameObject winUI;
+     public enum GameStatus { start, lose, win};
 
     static public GameStatus gameState;
 
@@ -22,8 +24,10 @@ public class GameManager : MonoBehaviour
             case GameStatus.start:
                 break;
             case GameStatus.lose:
+                loseUI.SetActive(true);
                 break;
             case GameStatus.win:
+                winUI.SetActive(true);
                 break;
         }
     }

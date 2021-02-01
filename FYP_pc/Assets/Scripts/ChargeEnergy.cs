@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ChargeEnergy : MonoBehaviour
 {
-    [SerializeField] int maxCharge;
-    int currentCharge;
+    static public int maxCharge = 2;
+    static public int currentCharge;
 
     int attackNum;
 
@@ -16,7 +16,7 @@ public class ChargeEnergy : MonoBehaviour
     void Start()
     {
         currentCharge = 0;
-        attackNum = 0;
+        attackNum = 1;
         player = this.GetComponent<PlayerBehaviour>();
     }
 

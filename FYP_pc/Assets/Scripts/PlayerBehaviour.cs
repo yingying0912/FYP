@@ -6,8 +6,8 @@ public class PlayerBehaviour : MonoBehaviour
 {
     public enum PlayerStatus { normal, super, dead };
 
-    [SerializeField] int maxHP;
-    int currentHp;
+    static public int maxHP = 10;
+    static public int currentHp;
     static public PlayerStatus currentState;
 
     int attackValue;
@@ -49,6 +49,8 @@ public class PlayerBehaviour : MonoBehaviour
     public void Attack()
     {
         Debug.Log("Attack Animation");
+        Debug.Log("AttackDamage: " + attackValue);
+        Debug.Log("Player Status: " + currentState);
     }
 
     public int getAttackValue()
@@ -68,7 +70,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void receivedDamage(int damage)
     {
-        currentHp -= damage;
+        currentHp -= damage * damageValue;
     }
 
     void checkStatus()

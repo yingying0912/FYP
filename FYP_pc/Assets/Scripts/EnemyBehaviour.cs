@@ -6,8 +6,8 @@ public class EnemyBehaviour : MonoBehaviour
 {
     public enum EnemyStatus { idle, attack, dead};
 
-    [SerializeField] int enemyHP;
-    int enemyCurrentHP;
+    static public int enemyHP = 2;
+    static public int enemyCurrentHP;
 
     public static EnemyStatus enemyStatus;
 
