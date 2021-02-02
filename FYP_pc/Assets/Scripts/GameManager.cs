@@ -6,9 +6,11 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject loseUI;
     [SerializeField] GameObject winUI;
-     public enum GameStatus { start, lose, win};
+    public enum GameStatus {tutorial, start, lose, win};
 
     static public GameStatus gameState;
+
+    [SerializeField] WashHandLoop washHand;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,11 @@ public class GameManager : MonoBehaviour
     {
         switch (gameState)
         {
+            case GameStatus.tutorial:
+                washHand.enabled = false;
+                break;
             case GameStatus.start:
+                washHand.enabled = true;
                 break;
             case GameStatus.lose:
                 loseUI.SetActive(true);

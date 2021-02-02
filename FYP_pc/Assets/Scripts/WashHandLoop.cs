@@ -5,7 +5,7 @@ using UnityEngine;
 public class WashHandLoop : MonoBehaviour
 {
     [SerializeField]GameObject[] HandGestures;
-    int currentGesture;
+    public int currentGesture;
 
     // Start is called before the first frame update
     void Start()
