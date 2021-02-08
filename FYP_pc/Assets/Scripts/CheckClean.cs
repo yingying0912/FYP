@@ -19,7 +19,9 @@ public class CheckClean : MonoBehaviour
         isCleaned = false;
         CleanedNum = 0;
         for (int i = 0; i < Bacterium.Count; i++)
+        {
             BacteriaTriggered.Add(Bacterium[i].GetComponent<BacteriaTrigger>());
+        }
 
         totalClean = BacteriaTriggered.Count;
     }
@@ -27,8 +29,9 @@ public class CheckClean : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        totalClean = BacteriaTriggered.Count;
         CleanedNum = 0;
-        isCleaned = false; 
+        isCleaned = false;
 
         foreach (BacteriaTrigger bacteria in BacteriaTriggered)
         {
@@ -46,7 +49,6 @@ public class CheckClean : MonoBehaviour
             {
                 bacteria.TriggeredNum = 0;
             }
-        }
-            
+        }  
     }
 }

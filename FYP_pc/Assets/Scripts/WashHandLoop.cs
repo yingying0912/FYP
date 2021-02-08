@@ -5,7 +5,9 @@ using UnityEngine;
 public class WashHandLoop : MonoBehaviour
 {
     [SerializeField]GameObject[] HandGestures;
-    public int currentGesture;
+    public static int currentGesture;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,7 @@ public class WashHandLoop : MonoBehaviour
         {
             HandGestures[i].SetActive(false);
         }
+        
     }
 
     // Update is called once per frame

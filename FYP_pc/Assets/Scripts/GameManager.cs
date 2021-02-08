@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,12 +11,18 @@ public class GameManager : MonoBehaviour
 
     static public GameStatus gameState;
 
-    [SerializeField] WashHandLoop washHand;
+    WashHandLoop washHand;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameState = GameStatus.start;
+        washHand = this.GetComponent<WashHandLoop>();
+        washHand.enabled = false;
+
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+            gameState = GameStatus.tutorial;
+        else
+            gameState = GameStatus.start;
     }
 
     // Update is called once per frame
@@ -24,10 +31,12 @@ public class GameManager : MonoBehaviour
         switch (gameState)
         {
             case GameStatus.tutorial:
-                washHand.enabled = false;
+                if (washHand.enabled)
+                    washHand.enabled = false;
                 break;
             case GameStatus.start:
-                washHand.enabled = true;
+                if (!washHand.enabled)
+                    washHand.enabled = true;
                 break;
             case GameStatus.lose:
                 loseUI.SetActive(true);
