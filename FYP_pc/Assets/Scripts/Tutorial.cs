@@ -13,8 +13,13 @@ public class Tutorial : MonoBehaviour
     [SerializeField] GameObject washHandVideo;
 
     [SerializeField] VideoPlayer videoPlayer;
+    [SerializeField] VideoClip[] videos;
 
-    string[] videoName = { "FYP_1", "FYP_2", "FYP_3", "FYP_4", "FYP_5", "FYP_6", "FYP_7", "FYP_8", "FYP_9" };
+    [SerializeField] GameObject buttonPanel;
+
+    float lastDialogueWaitingTime = 2f;
+    float endUIWaitingTime = 5f;
+    float currentTime = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -37,15 +42,41 @@ public class Tutorial : MonoBehaviour
 
         if (washHandVideo.activeSelf)
         {
-            videoPlayer.clip.name = videoName[WashHandLoop.currentGesture];
+            videoPlayer.clip = videos[WashHandLoop.currentGesture];
             videoPlayer.isLooping = true;
             videoPlayer.SetDirectAudioMute(0, true);
+            videoPlayer.Play();
+        }
+
+        if (WashHandLoop.loopOnce)
+        {
+            GameManager.gameState = GameManager.GameStatus.tutorial;
+            washHandVideo.SetActive(false);
+            cleanSlider.enabled = false;
+
+            currentTime += Time.deltaTime;
+            if (currentTime >= lastDialogueWaitingTime)
+            {
+                dialogues[dialogues.Length - 2].SetActive(false);
+                dialogues[dialogues.Length - 1].SetActive(true);
+            }
+            
+            /*
+            if (currentTime >= lastDialogueWaitingTime * 2)
+            {
+                dialogues[dialogues.Length - 22].SetActive(false);
+                dialogues[dialogues.Length - 1].SetActive(true);
+            }
+            */
+                
+            if (currentTime >= endUIWaitingTime)
+                buttonPanel.SetActive(true);
         }
     }
 
     IEnumerator DisplayDialogue(float time)
     {
-        for (int i = 0; i < dialogues.Length; i++)
+        for (int i = 0; i < dialogues.Length - 1; i++)
         {
             if (i != 0)
             {

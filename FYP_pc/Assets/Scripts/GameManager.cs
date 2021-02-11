@@ -32,7 +32,10 @@ public class GameManager : MonoBehaviour
         {
             case GameStatus.tutorial:
                 if (washHand.enabled)
+                {
+                    washHand.setInactive();
                     washHand.enabled = false;
+                }
                 break;
             case GameStatus.start:
                 if (!washHand.enabled)

@@ -6,7 +6,7 @@ public class WashHandLoop : MonoBehaviour
 {
     [SerializeField]GameObject[] HandGestures;
     public static int currentGesture;
-
+    public static bool loopOnce;
 
 
     // Start is called before the first frame update
@@ -19,7 +19,7 @@ public class WashHandLoop : MonoBehaviour
         {
             HandGestures[i].SetActive(false);
         }
-        
+        loopOnce = false;
     }
 
     // Update is called once per frame
@@ -34,10 +34,19 @@ public class WashHandLoop : MonoBehaviour
             
             currentGesture += 1;
             if (currentGesture >= HandGestures.Length)
+            {
+                loopOnce = true;
                 currentGesture -= HandGestures.Length;
+            }
+                
 
             HandGestures[currentGesture].SetActive(true);
             HandGestures[currentGesture].GetComponent<AttachmentToggle>().setBacteriaActive();
         }
+    }
+
+    public void setInactive()
+    {
+        HandGestures[currentGesture].GetComponent<AttachmentToggle>().setBacteriaInactive();
     }
 }
