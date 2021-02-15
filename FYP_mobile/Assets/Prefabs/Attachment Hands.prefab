@@ -1116,7 +1116,7 @@ MonoBehaviour:
   pinkyDistalJoint: {fileID: 2355463470810612430}
   pinkyTip: {fileID: 4568820157499050582}
   _chirality: 0
-  _isTracked: 1
+  _isTracked: 0
 --- !u!1 &2357099816469514191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,7 +1189,7 @@ MonoBehaviour:
   pinkyDistalJoint: {fileID: 2355463472896842154}
   pinkyTip: {fileID: 7504560592401631203}
   _chirality: 1
-  _isTracked: 1
+  _isTracked: 0
 --- !u!1 &2357195850525816577
 GameObject:
   m_ObjectHideFlags: 0
@@ -2004,6 +2004,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalmBacteria (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9112364931966862744, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2642,7 +2647,12 @@ PrefabInstance:
     - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
       propertyPath: m_Name
-      value: PalmBacteria (6)
+      value: PalmBacteria (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9112364931966862744, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
@@ -2733,6 +2743,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PalmBacteria (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9112364931966862744, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
@@ -3002,7 +3017,12 @@ PrefabInstance:
     - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
       propertyPath: m_Name
-      value: PalmBacteria (8)
+      value: PalmBacteria (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9112364931966862744, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
@@ -3282,7 +3302,12 @@ PrefabInstance:
     - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
       propertyPath: m_Name
-      value: PalmBacteria (5)
+      value: PalmBacteria (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9112364931966862744, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
@@ -3363,6 +3388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PalmBacteria (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9112364931966862744, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
@@ -3644,6 +3674,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalmBacteria
       objectReference: {fileID: 0}
+    - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9112364931966862744, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3907,7 +3942,12 @@ PrefabInstance:
     - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
       propertyPath: m_Name
-      value: PalmBacteria (7)
+      value: PalmBacteria (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9112364931966862744, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
@@ -4092,7 +4132,12 @@ PrefabInstance:
     - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
       propertyPath: m_Name
-      value: PalmBacteria (10)
+      value: PalmBacteria (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9112364931966862744, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
@@ -4184,6 +4229,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PalmBacteria (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9112364931966862744, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4272,7 +4322,12 @@ PrefabInstance:
     - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
       propertyPath: m_Name
-      value: PalmBacteria (9)
+      value: PalmBacteria (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9112364931966862744, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
@@ -4458,6 +4513,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PalmBacteria (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9112364931966862725, guid: fa66dca6308811c42a0d3c369c9a8f15,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9112364931966862744, guid: fa66dca6308811c42a0d3c369c9a8f15,
         type: 3}
