@@ -5,12 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/OfflineScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
+    guid: 7512519f2485bab4d81f5f08207b4317
+  - enabled: 1
     path: Assets/Scenes/OnlineScene.unity
-    guid: 9f009b2c749f6ad47aa8d96dba50b025
+    guid: fa53a757df7d04dc7873e5efcc9b052a
   m_configObjects:
     com.unity.xr.arcore.PlayerSettings: {fileID: 11400000, guid: 5ccbb06855611e24ab11ebb42c2fb83e,
       type: 2}
