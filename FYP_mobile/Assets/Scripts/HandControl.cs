@@ -10,7 +10,7 @@ public class HandControl : MonoBehaviour {
 
 	private static int localPort;
 
-	private string IP = "10.0.0.37"; //cell
+	private string IP = "127.0.0.1"; //cell
 
 	private int port = 1999;  
 
@@ -22,6 +22,9 @@ public class HandControl : MonoBehaviour {
 	public static Vector3 offSetLeft = Vector3.zero;
 	public static Vector3 offSetRight = Vector3.zero;
 
+	[SerializeField] GameObject LeftHand;
+	[SerializeField] GameObject RightHand;
+
 	// Use this for initialization
 	void Start () {
 
@@ -30,6 +33,7 @@ public class HandControl : MonoBehaviour {
 		remoteEndPoint = new IPEndPoint(IPAddress.Parse(IP), port);
 		client = new UdpClient();
 
+		
 		//load saved offset data
 		if (PlayerPrefs.HasKey ("offsetLeftX")) {
 			offSetLeft = new Vector3(PlayerPrefs.GetFloat("offsetLeftX"),PlayerPrefs.GetFloat("offsetLeftY"),PlayerPrefs.GetFloat("offsetLeftZ"));
@@ -37,10 +41,13 @@ public class HandControl : MonoBehaviour {
 		if (PlayerPrefs.HasKey ("offsetRightX")) {
 			offSetRight = new Vector3(PlayerPrefs.GetFloat("offsetRightX"),PlayerPrefs.GetFloat("offsetRightY"),PlayerPrefs.GetFloat("offsetRightZ"));
 		}
+		
+		
 
-		StartCoroutine (SendData ());
+		StartCoroutine (SendData());
 	}
 
+	
 	void OnApplicationQuit()
 	{
 		//save offset x
@@ -53,37 +60,55 @@ public class HandControl : MonoBehaviour {
 		PlayerPrefs.SetFloat ("offsetRightY", offSetRight.y);
 		PlayerPrefs.SetFloat ("offsetRightZ", offSetRight.z);
 	}
+	
 
 	IEnumerator SendData(){
 
-		while (true) {
-
-			if (transform.childCount > 0) {
-				
-				strMessage = "";
-
-				if (transform.Find ("Left(Clone)") != null) {
-					Transform leftHand = transform.Find ("Left(Clone)").transform.GetChild(1);
-
-					Vector3 leftHandPosition = leftHand.position + offSetLeft;
-					//add comma so we can split by string when we recieve
-					strMessage += "l," + leftHandPosition.ToString() + "," + leftHand.rotation.ToString() + ",";
+		while (true) 
+		{
+			strMessage = "";
+			if (LeftHand.transform.childCount > 0)
+			{
+				if (LeftHand.active)
+				{
+					Transform left = LeftHand.transform.GetChild(0).GetChild(0);
+					strMessage += "l," + (left.position + offSetLeft).ToString() + "," + left.rotation.ToString() + ",";
+					for (int i = 0; i < 5; i++)
+                    {
+						Transform currentLeft = left.transform.GetChild(i);
+						strMessage += (currentLeft.position + offSetLeft).ToString() + "," + currentLeft.rotation.ToString() + ",";
+						do
+						{
+							currentLeft = currentLeft.transform.GetChild(0);
+							strMessage += (currentLeft.position + offSetLeft).ToString() + "," + currentLeft.rotation.ToString() + ",";
+						} while (currentLeft.transform.childCount > 0);
+					}
 				}
-				if (transform.Find ("Right(Clone)") != null) {
-					Transform rightHand = transform.Find ("Right(Clone)").transform.GetChild(1);
-
-					Vector3 rightHandPosition = rightHand.position + offSetRight;
-					strMessage += "r," + rightHandPosition.ToString() + "," + rightHand.rotation.ToString() + ",";
+			}
+			if (RightHand.transform.childCount > 0)
+            {
+				if (RightHand.active)
+				{
+					Transform right = RightHand.transform.GetChild(0).GetChild(0);
+					strMessage += "r," + (right.position + offSetRight).ToString() + "," + right.rotation.ToString() + ",";
+					
+					for (int i = 0; i < 5; i++)
+					{
+						Transform currentRight = right.transform.GetChild(i);
+						strMessage += (currentRight.position + offSetLeft).ToString() + "," + currentRight.rotation.ToString() + ",";
+						do
+						{
+							currentRight = currentRight.transform.GetChild(0);
+							strMessage += (currentRight.position + offSetLeft).ToString() + "," + currentRight.rotation.ToString() + ",";
+						} while (currentRight.transform.childCount > 0);
+					}
 				}
+			}
 
-			} else {
-				//clear out message every iteration
-				strMessage = "nothing";
-			}	
+			byte[] data = Encoding.UTF8.GetBytes(strMessage);
 
-			byte[] data = Encoding.UTF8.GetBytes (strMessage);
+			var message = client.Send(data, data.Length, remoteEndPoint);
 
-			var message = client.Send (data, data.Length, remoteEndPoint);
 			yield return message;
 		}
 	}

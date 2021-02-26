@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - FingerInterlaceBacteria_Left
+  - FingerInterlaceBacteria_Right
+  - FingerBackBacteria
+  - ThumbBacteria_Left
+  - ThumbBacteria_Right
   layers:
   - Default
   - TransparentFX

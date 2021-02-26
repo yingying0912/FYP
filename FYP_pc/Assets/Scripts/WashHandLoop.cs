@@ -27,7 +27,7 @@ public class WashHandLoop : MonoBehaviour
     {
         if (HandGestures[currentGesture].GetComponent<CheckClean>().isCleaned)
         {
-            gameObject.GetComponent<ChargeEnergy>().Charging();
+            //gameObject.GetComponent<ChargeEnergy>().Charging();
             HandGestures[currentGesture].SetActive(false);
             HandGestures[currentGesture].GetComponent<AttachmentToggle>().setBacteriaInactive();
             HandGestures[currentGesture].GetComponent<CheckClean>().isCleaned = false;

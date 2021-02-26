@@ -4,15 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
 
-
 public class ButtonBehaviour: MonoBehaviour
 {
     public NetworkManager networkManager;
-    public Text t_ip;
+    [SerializeField] Text t_ip;
+
+    public void OnServer()
+    {
+        networkManager.StartServer();
+    }
 
     public void OnClient()
     {
         networkManager.networkAddress = t_ip.text.ToString();
-        networkManager.StartClient();
+        networkManager.StartClient();        
     }
 }

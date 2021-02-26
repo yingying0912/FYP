@@ -6,15 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/OfflineScene.unity
-    guid: 7512519f2485bab4d81f5f08207b4317
+    path: Assets/Scenes/MainMenu.unity
+    guid: 3bf385372f572164797ffd83b0c5ee85
   - enabled: 1
-    path: Assets/Scenes/OnlineScene.unity
-    guid: fa53a757df7d04dc7873e5efcc9b052a
-  m_configObjects:
-    com.unity.xr.arcore.PlayerSettings: {fileID: 11400000, guid: 5ccbb06855611e24ab11ebb42c2fb83e,
-      type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: aa432dd3e39ce1344a3d94b297fed919,
-      type: 2}
-    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: b2a0b3f989882874f8b3c40bf4da564c,
-      type: 2}
+    path: Assets/Scenes/TutorialScene.unity
+    guid: ce1e0d2ef84ad9642909f9a70d9a2579
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 2adda4f6ebecd504a9d200eb75498f26
+  m_configObjects: {}

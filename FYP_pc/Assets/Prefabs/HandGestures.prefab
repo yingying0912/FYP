@@ -41,16 +41,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087378974154297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62779e8c05a1d54428413cdd7f468ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: bb2ada1be629ea548822cdd827d02824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bacterium:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  isCleaned: 0
-  cleanConstant: 20
 --- !u!114 &7459087378974154300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,9 +53,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087378974154297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023ce3b6a7baeeb499e1836259985dc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 94f290612b3b0ea4686625cbca662fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bacterium: []
+  isCleaned: 0
+  cleanConstant: 0
 --- !u!1 &7459087379302376919
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,20 +100,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087379302376919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62779e8c05a1d54428413cdd7f468ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: bb2ada1be629ea548822cdd827d02824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bacterium:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  isCleaned: 0
-  cleanConstant: 10
 --- !u!114 &7459087379302376922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,9 +112,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087379302376919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023ce3b6a7baeeb499e1836259985dc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 94f290612b3b0ea4686625cbca662fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bacterium: []
+  isCleaned: 0
+  cleanConstant: 0
 --- !u!1 &7459087379422453506
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,14 +159,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087379422453506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62779e8c05a1d54428413cdd7f468ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: bb2ada1be629ea548822cdd827d02824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bacterium:
-  - {fileID: 0}
-  - {fileID: 0}
-  isCleaned: 0
-  cleanConstant: 10
 --- !u!114 &7459087379422453509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,9 +171,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087379422453506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023ce3b6a7baeeb499e1836259985dc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 94f290612b3b0ea4686625cbca662fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bacterium: []
+  isCleaned: 0
+  cleanConstant: 0
 --- !u!1 &7459087379855955937
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,14 +218,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087379855955937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62779e8c05a1d54428413cdd7f468ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: bb2ada1be629ea548822cdd827d02824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bacterium:
-  - {fileID: 0}
-  - {fileID: 0}
-  isCleaned: 0
-  cleanConstant: 10
 --- !u!114 &7459087379855955940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,9 +230,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087379855955937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023ce3b6a7baeeb499e1836259985dc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 94f290612b3b0ea4686625cbca662fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bacterium: []
+  isCleaned: 0
+  cleanConstant: 0
 --- !u!1 &7459087380223702600
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,17 +277,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087380223702600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62779e8c05a1d54428413cdd7f468ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: bb2ada1be629ea548822cdd827d02824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bacterium:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  isCleaned: 0
-  cleanConstant: 50
 --- !u!114 &7459087380223702603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,9 +289,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087380223702600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023ce3b6a7baeeb499e1836259985dc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 94f290612b3b0ea4686625cbca662fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bacterium: []
+  isCleaned: 0
+  cleanConstant: 0
 --- !u!1 &7459087380645159094
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,17 +375,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087380657164699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62779e8c05a1d54428413cdd7f468ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: bb2ada1be629ea548822cdd827d02824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bacterium:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  isCleaned: 0
-  cleanConstant: 10
 --- !u!114 &7459087380657164702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,9 +387,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087380657164699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023ce3b6a7baeeb499e1836259985dc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 94f290612b3b0ea4686625cbca662fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bacterium: []
+  isCleaned: 0
+  cleanConstant: 0
 --- !u!1 &7459087380844058246
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,17 +434,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087380844058246}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62779e8c05a1d54428413cdd7f468ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: bb2ada1be629ea548822cdd827d02824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bacterium:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  isCleaned: 0
-  cleanConstant: 10
 --- !u!114 &7459087380844058249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,9 +446,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087380844058246}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023ce3b6a7baeeb499e1836259985dc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 94f290612b3b0ea4686625cbca662fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bacterium: []
+  isCleaned: 0
+  cleanConstant: 0
 --- !u!1 &7459087380882881693
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,34 +493,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087380882881693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62779e8c05a1d54428413cdd7f468ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: bb2ada1be629ea548822cdd827d02824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bacterium:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  isCleaned: 0
-  cleanConstant: 8
 --- !u!114 &7459087380882881696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,9 +505,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087380882881693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023ce3b6a7baeeb499e1836259985dc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 94f290612b3b0ea4686625cbca662fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bacterium: []
+  isCleaned: 0
+  cleanConstant: 0
 --- !u!1 &7459087380903226575
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,17 +552,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087380903226575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62779e8c05a1d54428413cdd7f468ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: bb2ada1be629ea548822cdd827d02824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bacterium:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  isCleaned: 0
-  cleanConstant: 50
 --- !u!114 &7459087380903226578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,6 +564,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7459087380903226575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023ce3b6a7baeeb499e1836259985dc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 94f290612b3b0ea4686625cbca662fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bacterium: []
+  isCleaned: 0
+  cleanConstant: 0

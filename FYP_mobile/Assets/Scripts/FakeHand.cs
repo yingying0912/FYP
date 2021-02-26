@@ -32,10 +32,10 @@ public class FakeHand : MonoBehaviour
         LeftAttachmentInfo = LeftAttachment.transform;
         RightAttachmentInfo = RightAttachment.transform;
 
-        //LeftHandStatus = LeftHand.active;
-        //RightHandStatus = RightHand.active;
+        LeftHandStatus = LeftHand.active;
+        RightHandStatus = RightHand.active;
 
-        if (!LeftHand.active)
+        if (!LeftHandStatus)
         {
             FakeLeftHand.transform.position = LeftHandInfo.position;
             FakeLeftHand.transform.rotation = LeftHandInfo.rotation;
@@ -46,7 +46,7 @@ public class FakeHand : MonoBehaviour
             FakeLeftAttachment.SetActive(true);
         }
         
-        if (!RightHand.active)
+        if (!RightHandStatus)
         {
             FakeRightHand.transform.position = RightHandInfo.position;
             FakeRightHand.transform.rotation = RightHandInfo.rotation;
