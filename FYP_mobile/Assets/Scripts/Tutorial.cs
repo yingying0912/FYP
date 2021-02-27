@@ -8,25 +8,26 @@ public class Tutorial : MonoBehaviour
 {
     [SerializeField] GameObject startDialogue;
     Transform[] startDialogues;
+    [SerializeField] GameObject playDialogue;
+    Transform[] playDialogues;
     [SerializeField] GameObject endDialogue;
     Transform[] endDialogues;
 
     [SerializeField] GameObject virus;
 
     [SerializeField] Image cleanSlider;
-    [SerializeField] GameObject washHandVideo;
 
+    [SerializeField] GameObject washHandVideo;
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] VideoClip[] videos;
     int currentGes = -1;
 
     [SerializeField] GameObject buttonPanel;
 
-    bool isInvoking = false;
+    bool playTutorial = false;
+    bool endTutorial = false;
+    bool chat = false;
 
-    float lastDialogueWaitingTime = 2f;
-    float endUIWaitingTime = 5f;
-    float currentTime = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class Tutorial : MonoBehaviour
         washHandVideo.SetActive(false);
 
         startDialogues = startDialogue.GetComponentsInChildren<Transform>(true);
+        playDialogues = playDialogue.GetComponentsInChildren<Transform>(true);
         endDialogues = endDialogue.GetComponentsInChildren<Transform>(true);
 
         Debug.Log(startDialogues.Length);
@@ -50,6 +52,16 @@ public class Tutorial : MonoBehaviour
     {
         //if (cleanSlider.enabled)
         // cleanSlider.fillAmount = (float)CheckClean.CleanedNum / (float)CheckClean.totalClean;
+        
+        if (playTutorial)
+        {
+            PlayTutorial();
+        }
+
+        if (endTutorial)
+        {
+            EndTutorial();
+        }
     }
 
     IEnumerator StartTutorial()
@@ -74,6 +86,13 @@ public class Tutorial : MonoBehaviour
 
         startDialogues[startDialogues.Length - 1].gameObject.SetActive(false);
         startDialogues[1].gameObject.SetActive(false);
+        virus.SetActive(false);
+
+        GameManager.gameState = GameManager.GameStatus.start;
+
+        washHandVideo.SetActive(true);
+
+        playTutorial = true;
 
         yield return null;
 
@@ -83,36 +102,52 @@ public class Tutorial : MonoBehaviour
         */
     }
 
-    IEnumerator PlayTutorial()
+    void PlayTutorial()
     {
-        GameManager.gameState = GameManager.GameStatus.start;
+        playDialogues[1].gameObject.SetActive(true);
 
-        washHandVideo.SetActive(true);
-
-        while (true)
+        if (currentGes != WashHandLoop.currentGesture)
         {
-            if (currentGes != WashHandLoop.currentGesture)
-            {
-                currentGes = WashHandLoop.currentGesture;
+            currentGes = WashHandLoop.currentGesture;
 
-                videoPlayer.clip = videos[currentGes];
-                videoPlayer.isLooping = true;
-                videoPlayer.SetDirectAudioMute(0, true);
-                videoPlayer.Play();
+            if (currentGes > 0)
+            {
+                playDialogues[currentGes + 1].gameObject.SetActive(false);
             }
 
-            if (WashHandLoop.loopOnce)
-            {
-                GameManager.gameState = GameManager.GameStatus.tutorial;
-                washHandVideo.SetActive(false);
+            playDialogues[currentGes + 2].gameObject.SetActive(true);
 
-                break;
-            }
+            videoPlayer.clip = videos[currentGes];
+            videoPlayer.isLooping = true;
+            videoPlayer.SetDirectAudioMute(0, true);
+            videoPlayer.Play();
         }
-        yield return null;
+
+        if (WashHandLoop.loopOnce)
+        {
+            playTutorial = false;
+            playDialogues[1].gameObject.SetActive(false);
+            playDialogues[playDialogues.Length - 1].gameObject.SetActive(false);
+
+            GameManager.gameState = GameManager.GameStatus.tutorial;
+            washHandVideo.SetActive(false);
+            endTutorial = true;
+        }
+    }
+
+    void EndTutorial()
+    {
+        if (!chat)
+        {
+            chat = true;
+
+            endDialogues[1].gameObject.SetActive(true);
+            this.Invoke(() => endDialogues[2].gameObject.SetActive(true), 2);
+            this.Invoke(() => endDialogues[2].gameObject.GetComponent<Text>().text = "Congratulations!", 2);
+            this.Invoke(() => endDialogues[2].gameObject.GetComponent<Text>().text = "Now you are ready!", 4);
+            this.Invoke(() => endDialogues[2].gameObject.GetComponent<Text>().text = "Lets' go!", 6);
+
+            this.Invoke(() => buttonPanel.SetActive(true), 7);
+        }
     }
 }
-
-
-
-

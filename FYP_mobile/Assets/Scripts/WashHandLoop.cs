@@ -1,17 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HighlightPlus;
 
 public class WashHandLoop : MonoBehaviour
 {
-    [SerializeField]GameObject[] HandGestures;
+    [SerializeField] GameObject[] HandGestures;
     public static int currentGesture;
     public static bool loopOnce;
-
+    [SerializeField] HighlightEffect highlight;
 
     // Start is called before the first frame update
     void Start()
     {
+        highlight.enabled = true;
+        highlight.highlighted = true;
+        highlight.highlightStartTime = 0f;
+
         currentGesture = 0;
         HandGestures[currentGesture].SetActive(true);
         HandGestures[currentGesture].GetComponent<AttachmentToggle>().setBacteriaActive();
@@ -33,6 +38,9 @@ public class WashHandLoop : MonoBehaviour
             HandGestures[currentGesture].GetComponent<CheckClean>().isCleaned = false;
             
             currentGesture += 1;
+
+            highlight.glow = currentGesture / HandGestures.Length * 2;
+
             if (currentGesture >= HandGestures.Length)
             {
                 loopOnce = true;
