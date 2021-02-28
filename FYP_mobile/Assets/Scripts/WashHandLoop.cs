@@ -1,22 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using HighlightPlus;
+using cakeslice;
 
 public class WashHandLoop : MonoBehaviour
 {
     [SerializeField] GameObject[] HandGestures;
     public static int currentGesture;
     public static bool loopOnce;
-    [SerializeField] HighlightEffect highlight;
+
+    [SerializeField] OutlineEffect outlineEffect;
 
     // Start is called before the first frame update
     void Start()
     {
-        highlight.enabled = true;
-        highlight.highlighted = true;
-        highlight.highlightStartTime = 0f;
-
         currentGesture = 0;
         HandGestures[currentGesture].SetActive(true);
         HandGestures[currentGesture].GetComponent<AttachmentToggle>().setBacteriaActive();
@@ -39,7 +36,9 @@ public class WashHandLoop : MonoBehaviour
             
             currentGesture += 1;
 
-            highlight.glow = currentGesture / HandGestures.Length * 2;
+            outlineEffect.enabled = true;
+            outlineEffect.fillAmount = currentGesture / HandGestures.Length * 0.3f;
+
 
             if (currentGesture >= HandGestures.Length)
             {

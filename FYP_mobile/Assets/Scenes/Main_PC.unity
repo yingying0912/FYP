@@ -4029,6 +4029,7 @@ MonoBehaviour:
   - {fileID: 1338675015}
   - {fileID: 1338675014}
   - {fileID: 1338675013}
+  outlineEffect: {fileID: 0}
 --- !u!114 &1450503549
 MonoBehaviour:
   m_ObjectHideFlags: 0

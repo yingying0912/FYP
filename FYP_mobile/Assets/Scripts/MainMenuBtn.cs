@@ -9,11 +9,15 @@ public class MainMenuBtn : MonoBehaviour
     {
         if (transform.name == "StartBtn")
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else if (transform.name == "QuitBtn")
         {
             Application.Quit();
+        }
+        else if (transform.name == "ReturnBtn")
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }
