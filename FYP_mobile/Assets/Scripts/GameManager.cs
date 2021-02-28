@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject loseUI;
     [SerializeField] GameObject winUI;
-    public enum GameStatus {tutorial, start, lose, win};
+    public enum GameStatus {pause, start, lose, win};
 
     static public GameStatus gameState;
 
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
         washHand.enabled = false;
 
         if (SceneManager.GetActiveScene().buildIndex == 0)
-            gameState = GameStatus.tutorial;
+            gameState = GameStatus.pause;
         else
             gameState = GameStatus.start;
     }
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     {
         switch (gameState)
         {
-            case GameStatus.tutorial:
+            case GameStatus.pause:
                 if (washHand.enabled)
                 {
                     washHand.setInactive();

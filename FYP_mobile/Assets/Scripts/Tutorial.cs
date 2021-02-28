@@ -32,7 +32,7 @@ public class Tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.gameState = GameManager.GameStatus.tutorial;
+        GameManager.gameState = GameManager.GameStatus.pause;
 
         washHandVideo.SetActive(false);
 
@@ -129,7 +129,7 @@ public class Tutorial : MonoBehaviour
             playDialogues[1].gameObject.SetActive(false);
             playDialogues[playDialogues.Length - 1].gameObject.SetActive(false);
 
-            GameManager.gameState = GameManager.GameStatus.tutorial;
+            GameManager.gameState = GameManager.GameStatus.pause;
             washHandVideo.SetActive(false);
             endTutorial = true;
         }
