@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DigitalRuby.LightningBolt;
 
 public class EventTriggered : MonoBehaviour
 {
     [SerializeField] GameObject seed;
     [SerializeField] GameObject dialogue;
     [SerializeField] Transform player;
+
+    [SerializeField] LightningBoltScript lightning;
+    [SerializeField] LineRenderer line;
     
     [SerializeField] GameObject eventObject;
     List<GameObject> enemies = new List<GameObject>();
@@ -73,7 +77,13 @@ public class EventTriggered : MonoBehaviour
             if (currentGes != WashHandLoop.currentGesture)
             {
                 currentGes = WashHandLoop.currentGesture;
-                enemies[counter].SetActive(false);
+
+                lightning.EndObject = enemies[counter];
+                lightning.EndPosition.y = lightning.EndObject.transform.position.y + 0.2f;
+                line.enabled = true;
+
+                this.Invoke(() => enemies[counter].SetActive(false), 1.5f);
+                this.Invoke(() => line.enabled = false, 1.5f);
                 counter++;
             }
 
