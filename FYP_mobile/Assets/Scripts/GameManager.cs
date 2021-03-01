@@ -19,10 +19,7 @@ public class GameManager : MonoBehaviour
         washHand = this.GetComponent<WashHandLoop>();
         washHand.enabled = false;
 
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-            gameState = GameStatus.pause;
-        else
-            gameState = GameStatus.start;
+        gameState = GameStatus.pause;
     }
 
     // Update is called once per frame

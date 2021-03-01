@@ -1,31 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EventTriggered : MonoBehaviour
 {
     [SerializeField] GameObject seed;
+    [SerializeField] GameObject dialogue;
+    [SerializeField] Transform player;
     
     [SerializeField] GameObject eventObject;
-    Transform[] enemies;
+    List<GameObject> enemies = new List<GameObject>();
 
     string eventName;
     bool isTriggered = false;
     bool isInitialized = false;
+    bool ischat = false;
     int counter;
     int currentGes = 0;
 
     private void OnTriggerEnter(Collider other)
     {
-        eventName = other.gameObject.name;
+        eventName = this.gameObject.name;
         Game.gameStart = false;
+        //Event1();
     }
 
     private void Update()
     {
         switch (eventName)
         {
-            case "Event1":
+            case "Marker1":
                 Event1();
                 break;
         }
@@ -37,28 +42,48 @@ public class EventTriggered : MonoBehaviour
         {
             if (!isInitialized)
             {
-                seed.transform.rotation = new Quaternion(18.4f, 202.6f, 4f, 1);
-                enemies = eventObject.GetComponentsInChildren<Transform>(true);
-                GameManager.gameState = GameManager.GameStatus.start;
+                seed.transform.LookAt(player);
+                for (int i = 0; i < eventObject.transform.childCount; i++)
+                {
+                    Debug.Log(eventObject.transform.GetChild(i).gameObject);
+                    enemies.Add(eventObject.transform.GetChild(i).gameObject);
+                }
+ 
                 isInitialized = true;
-                counter = 1;
+                counter = 0;
             }
 
-            if (counter < enemies.Length)
+            if (!ischat)
             {
-                enemies[counter].gameObject.SetActive(true);
+                ischat = true;
+                dialogue.SetActive(true);
+                dialogue.GetComponentInChildren<Text>().text = "See! There is\na virus.";
+                this.Invoke(() => dialogue.GetComponentInChildren<Text>().text = "Wash your hands\nto kill it.", 2);
+                this.Invoke(() => dialogue.SetActive(false), 4);
+
+                this.Invoke(() => GameManager.gameState = GameManager.GameStatus.start, 5);
+            }
+
+            if (counter < enemies.Count)
+            {
+                enemies[counter].SetActive(true);
+                Debug.Log(enemies[counter].gameObject.name);
             }
 
             if (currentGes != WashHandLoop.currentGesture)
             {
                 currentGes = WashHandLoop.currentGesture;
-                enemies[counter].gameObject.SetActive(false);
+                enemies[counter].SetActive(false);
                 counter++;
             }
 
             if (WashHandLoop.loopOnce)
             {
                 isTriggered = true;
+                GameManager.gameState = GameManager.GameStatus.pause;
+                Game.currentMarker++;
+                Game.gameStart = true;
+                seed.transform.rotation = new Quaternion(0, 0, 0, 1);
             }
         } 
     }

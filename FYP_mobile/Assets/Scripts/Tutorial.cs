@@ -17,9 +17,9 @@ public class Tutorial : MonoBehaviour
 
     [SerializeField] Image cleanSlider;
 
-    [SerializeField] GameObject washHandVideo;
-    [SerializeField] VideoPlayer videoPlayer;
-    [SerializeField] VideoClip[] videos;
+    //[SerializeField] GameObject washHandVideo;
+    //[SerializeField] VideoPlayer videoPlayer;
+    //[SerializeField] VideoClip[] videos;
     int currentGes = -1;
 
     [SerializeField] GameObject buttonPanel;
@@ -34,7 +34,7 @@ public class Tutorial : MonoBehaviour
     {
         GameManager.gameState = GameManager.GameStatus.pause;
 
-        washHandVideo.SetActive(false);
+        //washHandVideo.SetActive(false);
 
         startDialogues = startDialogue.GetComponentsInChildren<Transform>(true);
         playDialogues = playDialogue.GetComponentsInChildren<Transform>(true);
@@ -90,7 +90,7 @@ public class Tutorial : MonoBehaviour
 
         GameManager.gameState = GameManager.GameStatus.start;
 
-        washHandVideo.SetActive(true);
+        //washHandVideo.SetActive(true);
 
         playTutorial = true;
 
@@ -117,10 +117,12 @@ public class Tutorial : MonoBehaviour
 
             playDialogues[currentGes + 2].gameObject.SetActive(true);
 
+            /*
             videoPlayer.clip = videos[currentGes];
             videoPlayer.isLooping = true;
             videoPlayer.SetDirectAudioMute(0, true);
             videoPlayer.Play();
+            */
         }
 
         if (WashHandLoop.loopOnce)
@@ -130,7 +132,7 @@ public class Tutorial : MonoBehaviour
             playDialogues[playDialogues.Length - 1].gameObject.SetActive(false);
 
             GameManager.gameState = GameManager.GameStatus.pause;
-            washHandVideo.SetActive(false);
+            //washHandVideo.SetActive(false);
             endTutorial = true;
         }
     }

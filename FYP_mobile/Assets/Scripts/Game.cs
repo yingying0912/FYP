@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class Game : MonoBehaviour
 {
@@ -9,12 +10,19 @@ public class Game : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject Dialogue;
 
+    [SerializeField] GameObject marker;
+    Transform[] markers;
+    public static int currentMarker = 1;
+
+    [SerializeField] NavMeshAgent nmAgent;
+
     public static bool gameStart = false;
 
     // Start is called before the first frame update
     void Start()
     {
         GameManager.gameState = GameManager.GameStatus.pause;
+        markers = marker.GetComponentsInChildren<Transform>();
         StartCoroutine("GameStart");
     }
 
@@ -23,8 +31,10 @@ public class Game : MonoBehaviour
     {
         if (gameStart)
         {
-            seed.transform.position = new Vector3(seed.transform.position.x, seed.transform.position.y, seed.transform.position.z + Time.deltaTime);
-            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, seed.transform.position.z - 1.6f);
+            nmAgent.SetDestination(markers[currentMarker].position);
+
+            //seed.transform.position = new Vector3(seed.transform.position.x, seed.transform.position.y, seed.transform.position.z + Time.deltaTime);
+            //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, seed.transform.position.z - 1.6f);
         }
     }
 

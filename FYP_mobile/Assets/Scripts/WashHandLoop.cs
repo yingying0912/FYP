@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using cakeslice;
+using UnityEngine.Video;
 
 public class WashHandLoop : MonoBehaviour
 {
     [SerializeField] GameObject[] HandGestures;
     public static int currentGesture;
     public static bool loopOnce;
+
+    [SerializeField] GameObject washHandVideo;
+    [SerializeField] VideoPlayer videoPlayer;
+    [SerializeField] VideoClip[] videos;
 
     [SerializeField] OutlineEffect outlineEffect;
 
@@ -22,6 +27,12 @@ public class WashHandLoop : MonoBehaviour
             HandGestures[i].SetActive(false);
         }
         loopOnce = false;
+
+        washHandVideo.SetActive(true);
+        videoPlayer.clip = videos[currentGesture];
+        videoPlayer.isLooping = true;
+        videoPlayer.SetDirectAudioMute(0, true);
+        videoPlayer.Play();
     }
 
     // Update is called once per frame
@@ -37,23 +48,39 @@ public class WashHandLoop : MonoBehaviour
             currentGesture += 1;
 
             outlineEffect.enabled = true;
-            outlineEffect.fillAmount = currentGesture / HandGestures.Length * 0.3f;
+            outlineEffect.fillAmount = currentGesture / (float)HandGestures.Length * 0.3f;
 
 
             if (currentGesture >= HandGestures.Length)
             {
                 loopOnce = true;
+                washHandVideo.SetActive(false);
                 currentGesture -= HandGestures.Length;
+                outlineReset();
             }
                 
 
             HandGestures[currentGesture].SetActive(true);
             HandGestures[currentGesture].GetComponent<AttachmentToggle>().setBacteriaActive();
+
+            if (washHandVideo.active)
+            {
+                videoPlayer.clip = videos[currentGesture];
+                videoPlayer.isLooping = true;
+                videoPlayer.SetDirectAudioMute(0, true);
+                videoPlayer.Play();
+            }
         }
     }
 
     public void setInactive()
     {
         HandGestures[currentGesture].GetComponent<AttachmentToggle>().setBacteriaInactive();
+    }
+
+    public void outlineReset()
+    {
+        outlineEffect.fillAmount = 0;
+        outlineEffect.enabled = false;
     }
 }

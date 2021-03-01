@@ -4262,7 +4262,19 @@ MonoBehaviour:
   - {fileID: 1217251489}
   - {fileID: 120714127}
   - {fileID: 1051797768}
-  outlineEffect: {fileID: 0}
+  washHandVideo: {fileID: 614051800}
+  videoPlayer: {fileID: 1716596392}
+  videos:
+  - {fileID: 32900000, guid: b65cf76c08ebcb94491ecd4373190d2a, type: 3}
+  - {fileID: 32900000, guid: 84127fa3e8d8a2646840f3737fa955a8, type: 3}
+  - {fileID: 32900000, guid: 948beb0013c78094f9631ea01c3e10a8, type: 3}
+  - {fileID: 32900000, guid: 44f58b8f8f6dea5439fe7d2183f30c53, type: 3}
+  - {fileID: 32900000, guid: 7bda0e339624ebf438f674ca3091faf5, type: 3}
+  - {fileID: 32900000, guid: 73b5856a89453c04f8d2ca235477fe58, type: 3}
+  - {fileID: 32900000, guid: 70c79e4a978f734478d6fb8d2e0cacd9, type: 3}
+  - {fileID: 32900000, guid: 37017384f531f474783aaf45c4d88122, type: 3}
+  - {fileID: 32900000, guid: ffd483e6f02c87047a9abef3779bc474, type: 3}
+  outlineEffect: {fileID: 1309688801}
 --- !u!114 &972098977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4333,18 +4345,6 @@ MonoBehaviour:
   endDialogue: {fileID: 123563108}
   virus: {fileID: 1249429918}
   cleanSlider: {fileID: 1204107716}
-  washHandVideo: {fileID: 614051800}
-  videoPlayer: {fileID: 1716596392}
-  videos:
-  - {fileID: 32900000, guid: b65cf76c08ebcb94491ecd4373190d2a, type: 3}
-  - {fileID: 32900000, guid: 84127fa3e8d8a2646840f3737fa955a8, type: 3}
-  - {fileID: 32900000, guid: 948beb0013c78094f9631ea01c3e10a8, type: 3}
-  - {fileID: 32900000, guid: 44f58b8f8f6dea5439fe7d2183f30c53, type: 3}
-  - {fileID: 32900000, guid: 7bda0e339624ebf438f674ca3091faf5, type: 3}
-  - {fileID: 32900000, guid: 73b5856a89453c04f8d2ca235477fe58, type: 3}
-  - {fileID: 32900000, guid: 70c79e4a978f734478d6fb8d2e0cacd9, type: 3}
-  - {fileID: 32900000, guid: 37017384f531f474783aaf45c4d88122, type: 3}
-  - {fileID: 32900000, guid: ffd483e6f02c87047a9abef3779bc474, type: 3}
   buttonPanel: {fileID: 885447484}
 --- !u!1 &1024808309
 GameObject:
@@ -9279,6 +9279,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WashHandVideo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978153776951917796, guid: 7bfa672b1e776d645a6d9bca0bbb43c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bfa672b1e776d645a6d9bca0bbb43c1, type: 3}
