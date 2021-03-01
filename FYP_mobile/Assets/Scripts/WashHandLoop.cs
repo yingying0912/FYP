@@ -58,7 +58,6 @@ public class WashHandLoop : MonoBehaviour
                 currentGesture -= HandGestures.Length;
                 outlineReset();
             }
-                
 
             HandGestures[currentGesture].SetActive(true);
             HandGestures[currentGesture].GetComponent<AttachmentToggle>().setBacteriaActive();
