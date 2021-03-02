@@ -27,29 +27,31 @@ public class EventTriggered : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        eventName = this.gameObject.name;
         Game.gameStart = false;
-        TestPath();
+        eventName = this.gameObject.name;
+        //TestPath();
     }
-
     private void Update()
     {
         switch (eventName)
         {
             case "Marker1":
                 Event1();
+                //TestPath();
                 break;
             case "Marker2":
                 Event2();
+                //TestPath();
                 break;
             case "Marker3":
                 Event3();
+                //TestPath();
                 break;
             case "Marker4":
                 Event4();
+                //TestPath();
                 break;
-            case "Marker5":
-                Event5();
+            default:
                 break;
         }
         
@@ -78,7 +80,6 @@ public class EventTriggered : MonoBehaviour
             if (counter < enemies.Count)
             {
                 enemies[counter].SetActive(true);
-                Debug.Log(enemies[counter].gameObject.name);
             }
 
             if (currentGes != WashHandLoop.currentGesture)
@@ -90,7 +91,7 @@ public class EventTriggered : MonoBehaviour
 
                 this.Invoke(() => line.enabled = false, 1.5f);
                 this.Invoke(() => counter++, 1.5f);
-                this.Invoke(() => enemies[counter - 1].SetActive(false), 1.5f);
+                this.Invoke(() => enemies[counter - 1].SetActive(false), 1.7f);
             }
 
             if (WashHandLoop.loopOnce)
@@ -99,14 +100,15 @@ public class EventTriggered : MonoBehaviour
                 GameManager.gameState = GameManager.GameStatus.pause;
                 Game.currentMarker++;
 
-                this.Invoke(() => Game.gameStart = true, 1f);
-                seed.transform.rotation = new Quaternion(0, 0, 0, 1);
+                this.Invoke(() => Game.gameStart = true, 2f);
+                seed.transform.Rotate(0, 180, 0);
             }
         } 
     }
 
     void Event2()
     {
+        //Debug.Log("Entering event 2");
         if (!isTriggered)
         {
             if (!isInitialized)
@@ -131,7 +133,7 @@ public class EventTriggered : MonoBehaviour
                 if (currentGes % 3 == 0)
                 {
                     this.Invoke(() => counter++, 1.5f);
-                    this.Invoke(() => enemies[counter - 1].SetActive(false), 1.5f);
+                    this.Invoke(() => enemies[counter - 1].SetActive(false), 1.7f);
                 }
             }
 
@@ -141,8 +143,8 @@ public class EventTriggered : MonoBehaviour
                 GameManager.gameState = GameManager.GameStatus.pause;
                 Game.currentMarker++;
 
-                this.Invoke(() => Game.gameStart = true, 1f);
-                seed.transform.rotation = new Quaternion(0, 0, 0, 1);
+                this.Invoke(() => Game.gameStart = true, 2f);
+                seed.transform.Rotate(0, 180, 0);
             }
         }
     }
@@ -181,7 +183,7 @@ public class EventTriggered : MonoBehaviour
                 this.Invoke(() => enemies[counter].SetActive(false), 1.5f);
 
                 this.Invoke(() => Game.gameStart = true, 2f);
-                this.Invoke(() => seed.transform.rotation = new Quaternion(0, 0, 0, 1), 2f);
+                this.Invoke(() => seed.transform.Rotate(0, 180, 0), 2f);
             }
         }
     }
@@ -222,9 +224,11 @@ public class EventTriggered : MonoBehaviour
                 this.Invoke(() => dialogue.SetActive(true), 2f);
                 this.Invoke(() => dialogue.GetComponentInChildren<Text>().text = "Look! There is\nanother virus at\nyour back!", 2f);
                 this.Invoke(() => dialogue.GetComponentInChildren<Text>().text = "Try to kill it\nwithout my\nguidance.", 4f);
+                this.Invoke(() => dialogue.SetActive(false), 6f);
 
-                this.Invoke(() => loop1 = true, 4.5f);
+                //this.Invoke(() => loop1 = true, 4.5f);
                 this.Invoke(() => GameManager.gameState = GameManager.GameStatus.start, 4.5f);
+                WashHandLoop.loopOnce = false;
             }
 
             if (WashHandLoop.loopOnce && loop1)
@@ -236,19 +240,15 @@ public class EventTriggered : MonoBehaviour
                 this.Invoke(() => enemies[counter].SetActive(false), 1.5f);
 
                 this.Invoke(() => Game.gameStart = true, 2f);
-                this.Invoke(() => seed.transform.rotation = new Quaternion(0, 0, 0, 1), 2f);
+                this.Invoke(() => seed.transform.Rotate(0, 180, 0), 2f);
             }
 
         }
     }
 
-    void Event5()
-    {
-
-    }
-
     void Initialization()
     {
+        Reset();
         seed.transform.LookAt(player);
         for (int i = 0; i < eventObject.transform.childCount; i++)
         {
@@ -259,13 +259,20 @@ public class EventTriggered : MonoBehaviour
         counter = 0;
     }
 
+    private void Reset()
+    {
+        isTriggered = false;
+        isInitialized = false;
+        WashHandLoop.loopOnce = false;
+        currentGes = 0;
+    }
+
     void TestPath()
     {
         if (!isTriggered)
         {
             isTriggered = true;
             seed.transform.LookAt(player);
-            Debug.Log("current marker" + Game.currentMarker);
             Game.currentMarker++;
             this.Invoke(() => seed.transform.Rotate(0, 180, 0), 1f);
             this.Invoke(() => Game.gameStart = true, 1f);

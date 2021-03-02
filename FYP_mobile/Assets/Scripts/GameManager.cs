@@ -36,7 +36,10 @@ public class GameManager : MonoBehaviour
                 break;
             case GameStatus.start:
                 if (!washHand.enabled)
+                {
                     washHand.enabled = true;
+                    washHand.isActive = true;
+                }
                 break;
             case GameStatus.lose:
                 loseUI.SetActive(true);

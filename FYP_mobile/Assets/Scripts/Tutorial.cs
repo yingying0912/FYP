@@ -40,8 +40,6 @@ public class Tutorial : MonoBehaviour
         playDialogues = playDialogue.GetComponentsInChildren<Transform>(true);
         endDialogues = endDialogue.GetComponentsInChildren<Transform>(true);
 
-        Debug.Log(startDialogues.Length);
-
         //cleanSlider.enabled = false;
 
         StartCoroutine("StartTutorial");
@@ -116,20 +114,14 @@ public class Tutorial : MonoBehaviour
             }
 
             playDialogues[currentGes + 2].gameObject.SetActive(true);
-
-            /*
-            videoPlayer.clip = videos[currentGes];
-            videoPlayer.isLooping = true;
-            videoPlayer.SetDirectAudioMute(0, true);
-            videoPlayer.Play();
-            */
         }
 
         if (WashHandLoop.loopOnce)
         {
             playTutorial = false;
-            playDialogues[1].gameObject.SetActive(false);
             playDialogues[playDialogues.Length - 1].gameObject.SetActive(false);
+            playDialogues[1].gameObject.SetActive(false);
+            playDialogue.SetActive(false);
 
             GameManager.gameState = GameManager.GameStatus.pause;
             //washHandVideo.SetActive(false);

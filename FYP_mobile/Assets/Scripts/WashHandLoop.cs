@@ -16,7 +16,10 @@ public class WashHandLoop : MonoBehaviour
 
     [SerializeField] OutlineEffect outlineEffect;
 
+    public bool isActive = false;
+
     // Start is called before the first frame update
+    /*
     void Start()
     {
         currentGesture = 0;
@@ -34,10 +37,30 @@ public class WashHandLoop : MonoBehaviour
         videoPlayer.SetDirectAudioMute(0, true);
         videoPlayer.Play();
     }
+    */ 
 
     // Update is called once per frame
     void Update()
     {
+        if (isActive)
+        {
+            isActive = false;
+            currentGesture = 0;
+            HandGestures[currentGesture].SetActive(true);
+            HandGestures[currentGesture].GetComponent<AttachmentToggle>().setBacteriaActive();
+            for (int i = 1; i < HandGestures.Length; i++)
+            {
+                HandGestures[i].SetActive(false);
+            }
+            loopOnce = false;
+
+            washHandVideo.SetActive(true);
+            videoPlayer.clip = videos[currentGesture];
+            videoPlayer.isLooping = true;
+            videoPlayer.SetDirectAudioMute(0, true);
+            videoPlayer.Play();
+        }
+
         if (HandGestures[currentGesture].GetComponent<CheckClean>().isCleaned)
         {
             //gameObject.GetComponent<ChargeEnergy>().Charging();

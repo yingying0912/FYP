@@ -44,7 +44,6 @@ public class CheckClean : MonoBehaviour
 
         if (isCleaned)
         {
-            Debug.Log(name + " is Cleaned!");
             foreach (BacteriaTrigger bacteria in BacteriaTriggered)
             {
                 bacteria.TriggeredNum = 0;

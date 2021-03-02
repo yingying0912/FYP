@@ -3608,7 +3608,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Let me tell
 
-    you this!'
+    you ......'
 --- !u!222 &713558294
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4066,7 +4066,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Let''s go to
 
-    playground!'
+    the playground!'
 --- !u!222 &895626788
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4275,6 +4275,7 @@ MonoBehaviour:
   - {fileID: 32900000, guid: 37017384f531f474783aaf45c4d88122, type: 3}
   - {fileID: 32900000, guid: ffd483e6f02c87047a9abef3779bc474, type: 3}
   outlineEffect: {fileID: 1309688801}
+  isActive: 0
 --- !u!114 &972098977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4848,6 +4849,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176511918}
   m_CullTransparentMesh: 0
+--- !u!114 &1195194258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4514303177578819431, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4514303177599014465}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adb00f33cfab0c4ca91bd6c2224f859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1204107714
 GameObject:
   m_ObjectHideFlags: 0
@@ -5618,7 +5631,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Hi
+  m_Text: 'Hi, I am
+
+    Seed.'
 --- !u!222 &1424070369
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8835,7 +8850,7 @@ MonoBehaviour:
 
     repeat with right
 
-    finger tips and
+    fingertips and
 
     left palm.'
 --- !u!222 &2056016401
@@ -9031,6 +9046,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4514303176336496209, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4514303176494006899, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
         type: 3}
       propertyPath: m_Name
@@ -9039,7 +9059,7 @@ PrefabInstance:
     - target: {fileID: 4514303176494006899, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4514303176494006901, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
         type: 3}
@@ -9145,6 +9165,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4514303176738999677, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554047332138360664, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
+        type: 3}
+      propertyPath: _OnPress.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554047332138360664, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
+        type: 3}
+      propertyPath: _OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554047332138360664, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
+        type: 3}
+      propertyPath: _OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554047332138360664, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
+        type: 3}
+      propertyPath: _OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1195194258}
+    - target: {fileID: 4554047332138360664, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
+        type: 3}
+      propertyPath: _OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BtnPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554047332138360664, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
+        type: 3}
+      propertyPath: _OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554047333049266066, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
+        type: 3}
+      propertyPath: _OnUnpress.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4554047333049266066, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
         type: 3}
