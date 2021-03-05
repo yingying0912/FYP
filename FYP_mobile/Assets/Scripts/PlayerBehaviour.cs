@@ -41,7 +41,6 @@ public class PlayerBehaviour : MonoBehaviour
                 checkTime();
                 break;
             case PlayerStatus.dead:
-                GameManager.gameState = GameManager.GameStatus.lose;
                 break;
         }
     }

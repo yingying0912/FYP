@@ -5,8 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuBtn : MonoBehaviour
 {
+    AudioSource audio;
+
+    private void Start()
+    {
+        audio = this.GetComponent<AudioSource>();
+    }
+
     public void BtnPressed()
     {
+        audio.Play();
+
         if (transform.name == "StartBtn")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

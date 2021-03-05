@@ -10,6 +10,11 @@ public class EventTriggered : MonoBehaviour
     [SerializeField] GameObject dialogue;
     [SerializeField] Transform player;
 
+    [SerializeField] AudioSource audio;
+    [SerializeField] AudioClip[] clips;
+
+    Animator enemyAnim;
+
     [SerializeField] LightningBoltScript lightning;
     [SerializeField] LineRenderer line;
     
@@ -80,6 +85,7 @@ public class EventTriggered : MonoBehaviour
             if (counter < enemies.Count)
             {
                 enemies[counter].SetActive(true);
+                enemyAnim = enemies[counter].GetComponent<Animator>();
             }
 
             if (currentGes != WashHandLoop.currentGesture)
@@ -89,9 +95,11 @@ public class EventTriggered : MonoBehaviour
                 lightning.EndObject = enemies[counter];
                 line.enabled = true;
 
+                this.Invoke(() => enemyAnim.Play("Die"), 1f);
                 this.Invoke(() => line.enabled = false, 1.5f);
                 this.Invoke(() => counter++, 1.5f);
-                this.Invoke(() => enemies[counter - 1].SetActive(false), 1.7f);
+
+                this.Invoke(() => enemies[counter - 1].SetActive(false), 2f);
             }
 
             if (WashHandLoop.loopOnce)
@@ -100,7 +108,7 @@ public class EventTriggered : MonoBehaviour
                 GameManager.gameState = GameManager.GameStatus.pause;
                 Game.currentMarker++;
 
-                this.Invoke(() => Game.gameStart = true, 2f);
+                this.Invoke(() => Game.gameStart = true, 3f);
                 seed.transform.Rotate(0, 180, 0);
             }
         } 
@@ -119,6 +127,7 @@ public class EventTriggered : MonoBehaviour
             if (counter < enemies.Count)
             {
                 enemies[counter].SetActive(true);
+                enemyAnim = enemies[counter].GetComponent<Animator>();
             }
 
             if (currentGes != WashHandLoop.currentGesture)
@@ -132,8 +141,13 @@ public class EventTriggered : MonoBehaviour
 
                 if (currentGes % 3 == 0)
                 {
+                    this.Invoke(() => enemyAnim.Play("Die"), 1f);
                     this.Invoke(() => counter++, 1.5f);
-                    this.Invoke(() => enemies[counter - 1].SetActive(false), 1.7f);
+                    this.Invoke(() => enemies[counter - 1].SetActive(false), 2f);
+                }
+                else
+                {
+                    this.Invoke(() => enemyAnim.Play("GetHit"), 1f);
                 }
             }
 
@@ -143,7 +157,7 @@ public class EventTriggered : MonoBehaviour
                 GameManager.gameState = GameManager.GameStatus.pause;
                 Game.currentMarker++;
 
-                this.Invoke(() => Game.gameStart = true, 2f);
+                this.Invoke(() => Game.gameStart = true, 3f);
                 seed.transform.Rotate(0, 180, 0);
             }
         }
@@ -161,6 +175,7 @@ public class EventTriggered : MonoBehaviour
             if (counter < enemies.Count)
             {
                 enemies[counter].SetActive(true);
+                enemyAnim = enemies[counter].GetComponent<Animator>();
             }
 
             if (currentGes != WashHandLoop.currentGesture)
@@ -170,6 +185,7 @@ public class EventTriggered : MonoBehaviour
                 lightning.EndObject = enemies[counter];
                 line.enabled = true;
 
+                this.Invoke(() => enemyAnim.Play("GetHit"), 1f);
                 this.Invoke(() => line.enabled = false, 1.5f);
             }
 
@@ -180,10 +196,11 @@ public class EventTriggered : MonoBehaviour
                 GameManager.gameState = GameManager.GameStatus.pause;
                 Game.currentMarker++;
 
-                this.Invoke(() => enemies[counter].SetActive(false), 1.5f);
+                this.Invoke(() => enemyAnim.Play("Die"), 1f);
+                this.Invoke(() => enemies[counter].SetActive(false), 2f);
 
-                this.Invoke(() => Game.gameStart = true, 2f);
-                this.Invoke(() => seed.transform.Rotate(0, 180, 0), 2f);
+                this.Invoke(() => Game.gameStart = true, 3f);
+                this.Invoke(() => seed.transform.Rotate(0, 180, 0), 3f);
             }
         }
     }
@@ -200,6 +217,7 @@ public class EventTriggered : MonoBehaviour
             if (counter < enemies.Count)
             {
                 enemies[counter].SetActive(true);
+                enemyAnim = enemies[counter].GetComponent<Animator>();
             }
 
             if (currentGes != WashHandLoop.currentGesture)
@@ -209,6 +227,7 @@ public class EventTriggered : MonoBehaviour
                 lightning.EndObject = enemies[counter];
                 line.enabled = true;
 
+                this.Invoke(() => enemyAnim.Play("GetHit"), 1f);
                 this.Invoke(() => line.enabled = false, 1.5f);
             }
 
@@ -217,17 +236,21 @@ public class EventTriggered : MonoBehaviour
             {
                 loop1 = true;
                 GameManager.gameState = GameManager.GameStatus.pause;
+                this.Invoke(() => enemyAnim.Play("Die"), 1f);
                 this.Invoke(() => counter++, 1.5f);
-                this.Invoke(() => enemies[counter - 1].SetActive(false), 1.5f);
+                this.Invoke(() => enemies[counter - 1].SetActive(false), 2f);
 
                 //dialogue out
-                this.Invoke(() => dialogue.SetActive(true), 2f);
-                this.Invoke(() => dialogue.GetComponentInChildren<Text>().text = "Look! There is\nanother virus at\nyour back!", 2f);
-                this.Invoke(() => dialogue.GetComponentInChildren<Text>().text = "Try to kill it\nwithout my\nguidance.", 4f);
-                this.Invoke(() => dialogue.SetActive(false), 6f);
+                this.Invoke(() => dialogue.SetActive(true), 3f);
+                this.Invoke(() => dialogue.GetComponentInChildren<Text>().text = "Look! There is\nanother virus\nbehind you!", 3f);
+                this.Invoke(() => audio.PlayOneShot(clips[0]), 3f); 
 
-                //this.Invoke(() => loop1 = true, 4.5f);
-                this.Invoke(() => GameManager.gameState = GameManager.GameStatus.start, 4.5f);
+                this.Invoke(() => dialogue.GetComponentInChildren<Text>().text = "Try to kill it\nwithout my\nguidance.", 6f);
+                this.Invoke(() => audio.PlayOneShot(clips[1]), 6f);
+
+                this.Invoke(() => dialogue.SetActive(false), 8f);
+
+                this.Invoke(() => GameManager.gameState = GameManager.GameStatus.start, 6.5f);
                 WashHandLoop.loopOnce = false;
             }
 
@@ -237,10 +260,11 @@ public class EventTriggered : MonoBehaviour
                 GameManager.gameState = GameManager.GameStatus.pause;
                 Game.currentMarker++;
 
-                this.Invoke(() => enemies[counter].SetActive(false), 1.5f);
+                this.Invoke(() => enemyAnim.Play("Die"), 1f);
+                this.Invoke(() => enemies[counter].SetActive(false), 2f);
 
-                this.Invoke(() => Game.gameStart = true, 2f);
-                this.Invoke(() => seed.transform.Rotate(0, 180, 0), 2f);
+                this.Invoke(() => Game.gameStart = true, 3f);
+                this.Invoke(() => seed.transform.Rotate(0, 180, 0), 3f);
             }
 
         }

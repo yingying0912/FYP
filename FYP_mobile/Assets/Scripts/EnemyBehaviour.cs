@@ -43,7 +43,6 @@ public class EnemyBehaviour : MonoBehaviour
                 break;
             case EnemyStatus.dead:
                 animator.Play("Die");
-                GameManager.gameState = GameManager.GameStatus.win;
                 break;
         }
     }

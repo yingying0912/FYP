@@ -8,18 +8,20 @@ public class Tutorial : MonoBehaviour
 {
     [SerializeField] GameObject startDialogue;
     Transform[] startDialogues;
+    [SerializeField] AudioClip[] sd_audio;
+
     [SerializeField] GameObject playDialogue;
     Transform[] playDialogues;
+    [SerializeField] AudioClip[] pd_audio;
+
     [SerializeField] GameObject endDialogue;
     Transform[] endDialogues;
+    [SerializeField] AudioClip[] ed_audio;
+
+    [SerializeField] AudioSource audioSource;
 
     [SerializeField] GameObject virus;
 
-    [SerializeField] Image cleanSlider;
-
-    //[SerializeField] GameObject washHandVideo;
-    //[SerializeField] VideoPlayer videoPlayer;
-    //[SerializeField] VideoClip[] videos;
     int currentGes = -1;
 
     [SerializeField] GameObject buttonPanel;
@@ -34,13 +36,9 @@ public class Tutorial : MonoBehaviour
     {
         GameManager.gameState = GameManager.GameStatus.pause;
 
-        //washHandVideo.SetActive(false);
-
         startDialogues = startDialogue.GetComponentsInChildren<Transform>(true);
         playDialogues = playDialogue.GetComponentsInChildren<Transform>(true);
         endDialogues = endDialogue.GetComponentsInChildren<Transform>(true);
-
-        //cleanSlider.enabled = false;
 
         StartCoroutine("StartTutorial");
     }
@@ -48,8 +46,6 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (cleanSlider.enabled)
-        // cleanSlider.fillAmount = (float)CheckClean.CleanedNum / (float)CheckClean.totalClean;
         
         if (playTutorial)
         {
@@ -79,7 +75,12 @@ public class Tutorial : MonoBehaviour
                 virus.SetActive(true);
 
             startDialogues[i].gameObject.SetActive(true);
-            yield return new WaitForSeconds(3);
+            audioSource.PlayOneShot(sd_audio[i - 2]);
+
+            if (i < 6)
+                yield return new WaitForSeconds(2);
+            else
+                yield return new WaitForSeconds(5);
         }
 
         startDialogues[startDialogues.Length - 1].gameObject.SetActive(false);
@@ -88,16 +89,10 @@ public class Tutorial : MonoBehaviour
 
         GameManager.gameState = GameManager.GameStatus.start;
 
-        //washHandVideo.SetActive(true);
-
         playTutorial = true;
 
         yield return null;
 
-        /*
-        Debug.Log("cp4");
-        //cleanSlider.enabled = true;
-        */
     }
 
     void PlayTutorial()
@@ -113,7 +108,11 @@ public class Tutorial : MonoBehaviour
                 playDialogues[currentGes + 1].gameObject.SetActive(false);
             }
 
-            playDialogues[currentGes + 2].gameObject.SetActive(true);
+            if (!WashHandLoop.loopOnce)
+            {
+                playDialogues[currentGes + 2].gameObject.SetActive(true);
+                this.Invoke(() => audioSource.PlayOneShot(pd_audio[currentGes]), 0.5f);
+            }            
         }
 
         if (WashHandLoop.loopOnce)
@@ -124,7 +123,7 @@ public class Tutorial : MonoBehaviour
             playDialogue.SetActive(false);
 
             GameManager.gameState = GameManager.GameStatus.pause;
-            //washHandVideo.SetActive(false);
+
             endTutorial = true;
         }
     }
@@ -137,9 +136,15 @@ public class Tutorial : MonoBehaviour
 
             endDialogues[1].gameObject.SetActive(true);
             this.Invoke(() => endDialogues[2].gameObject.SetActive(true), 2);
+
             this.Invoke(() => endDialogues[2].gameObject.GetComponent<Text>().text = "Congratulations!", 2);
+            this.Invoke(() => audioSource.PlayOneShot(ed_audio[0]), 2);
+
             this.Invoke(() => endDialogues[2].gameObject.GetComponent<Text>().text = "Now you are ready!", 4);
+            this.Invoke(() => audioSource.PlayOneShot(ed_audio[1]), 4);
+
             this.Invoke(() => endDialogues[2].gameObject.GetComponent<Text>().text = "Lets' go!", 6);
+            this.Invoke(() => audioSource.PlayOneShot(ed_audio[2]), 6);
 
             this.Invoke(() => buttonPanel.SetActive(true), 7);
         }

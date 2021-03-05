@@ -14,6 +14,8 @@ public class WashHandLoop : MonoBehaviour
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] VideoClip[] videos;
 
+    [SerializeField] AudioSource audio;
+
     [SerializeField] OutlineEffect outlineEffect;
 
     public bool isActive = false;
@@ -64,6 +66,8 @@ public class WashHandLoop : MonoBehaviour
         if (HandGestures[currentGesture].GetComponent<CheckClean>().isCleaned)
         {
             //gameObject.GetComponent<ChargeEnergy>().Charging();
+            audio.Play();
+
             HandGestures[currentGesture].SetActive(false);
             HandGestures[currentGesture].GetComponent<AttachmentToggle>().setBacteriaInactive();
             HandGestures[currentGesture].GetComponent<CheckClean>().isCleaned = false;

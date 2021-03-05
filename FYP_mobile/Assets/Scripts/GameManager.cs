@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject loseUI;
-    [SerializeField] GameObject winUI;
-    public enum GameStatus {pause, start, lose, win};
+    public enum GameStatus {pause, start};
 
     static public GameStatus gameState;
 
@@ -40,12 +38,6 @@ public class GameManager : MonoBehaviour
                     washHand.enabled = true;
                     washHand.isActive = true;
                 }
-                break;
-            case GameStatus.lose:
-                loseUI.SetActive(true);
-                break;
-            case GameStatus.win:
-                winUI.SetActive(true);
                 break;
         }
     }

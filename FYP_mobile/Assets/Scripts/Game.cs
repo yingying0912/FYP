@@ -10,6 +10,9 @@ public class Game : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject Dialogue;
 
+    [SerializeField] AudioSource audio;
+    [SerializeField] AudioClip[] clips;
+
     [SerializeField] GameObject marker;
     Transform[] markers;
     List<GameObject> markersObj = new List<GameObject>();
@@ -53,16 +56,20 @@ public class Game : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         Dialogue.SetActive(true);
-        Dialogue.GetComponentInChildren<Text>().text = "We reached the\nplayground!";
+        Dialogue.GetComponentInChildren<Text>().text = "We have reached\nthe playground!";
+        audio.PlayOneShot(clips[0]);
 
         yield return new WaitForSeconds(2);
-        Dialogue.GetComponentInChildren<Text>().text = "There are a lot\nof virus at\nsurrounding.";
-        
+        Dialogue.GetComponentInChildren<Text>().text = "There are a lot\nof viruses here.";
+        audio.PlayOneShot(clips[1]);
+
         yield return new WaitForSeconds(2);
         Dialogue.GetComponentInChildren<Text>().text = "We need to kill\nthe virus if we\nmeet them.";
+        audio.PlayOneShot(clips[2]);
 
-        yield return new WaitForSeconds(2);
-        Dialogue.GetComponentInChildren<Text>().text = "Come! Follow me.";
+        yield return new WaitForSeconds(3);
+        Dialogue.GetComponentInChildren<Text>().text = "Come! Folow me.";
+        audio.PlayOneShot(clips[3]);
 
         yield return new WaitForSeconds(2);
         Dialogue.SetActive(false);
