@@ -94,7 +94,6 @@ public class Tutorial : MonoBehaviour
         yield return null;
 
     }
-
     void PlayTutorial()
     {
         playDialogues[1].gameObject.SetActive(true);

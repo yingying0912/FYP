@@ -42,19 +42,15 @@ public class EventTriggered : MonoBehaviour
         {
             case "Marker1":
                 Event1();
-                //TestPath();
                 break;
             case "Marker2":
                 Event2();
-                //TestPath();
                 break;
             case "Marker3":
                 Event3();
-                //TestPath();
                 break;
             case "Marker4":
                 Event4();
-                //TestPath();
                 break;
             default:
                 break;
@@ -76,7 +72,9 @@ public class EventTriggered : MonoBehaviour
                 ischat = true;
                 dialogue.SetActive(true);
                 dialogue.GetComponentInChildren<Text>().text = "See! There is\na virus.";
+                audio.PlayOneShot(clips[0]);
                 this.Invoke(() => dialogue.GetComponentInChildren<Text>().text = "Wash your hands\nto kill it.", 2);
+                this.Invoke(() => audio.PlayOneShot(clips[1]), 2);
                 this.Invoke(() => dialogue.SetActive(false), 4);
 
                 this.Invoke(() => GameManager.gameState = GameManager.GameStatus.start, 5);

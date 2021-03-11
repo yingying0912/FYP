@@ -45,9 +45,6 @@ public class Game : MonoBehaviour
                 markersObj[currentMarker - 1].SetActive(false);
             }
             nmAgent.SetDestination(markers[currentMarker].position);
-
-            //seed.transform.position = new Vector3(seed.transform.position.x, seed.transform.position.y, seed.transform.position.z + Time.deltaTime);
-            //player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, seed.transform.position.z - 1.6f);
         }
     }
 

@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: f42fbed97d41dc847aff14488a23f46e,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -19772,7 +19773,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -30088,6 +30089,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100008, guid: d0223f77114284b47a0e8b317e71e4dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: d0223f77114284b47a0e8b317e71e4dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -43556,7 +43561,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0ace9afe771e07d4dabf224e8d6c41b4, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
@@ -54519,8 +54524,10 @@ MonoBehaviour:
   seed: {fileID: 469025540}
   dialogue: {fileID: 880448438}
   player: {fileID: 1061796488}
-  audio: {fileID: 0}
-  clips: []
+  audio: {fileID: 469025543}
+  clips:
+  - {fileID: 8300000, guid: 47b1320f6ae9e9c45ba85f46715f2b47, type: 3}
+  - {fileID: 8300000, guid: f0522843a84861742b9b4aca0efb57c8, type: 3}
   lightning: {fileID: 1061796503}
   line: {fileID: 1061796504}
   eventObject: {fileID: 745607765}
@@ -68826,7 +68833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1762490953
 Transform:
   m_ObjectHideFlags: 0
@@ -83283,12 +83290,12 @@ PrefabInstance:
     - target: {fileID: 4514303176494006901, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -31.504
+      value: -31.257
       objectReference: {fileID: 0}
     - target: {fileID: 4514303176494006901, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.301
+      value: 1.526
       objectReference: {fileID: 0}
     - target: {fileID: 4514303176494006901, guid: 0cec295c01a2a454c80edb3c2bf2a20a,
         type: 3}
